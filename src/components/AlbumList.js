@@ -19,15 +19,19 @@ class AlbumList extends Component {
     );
   }
 
-  render() {
-    console.log(this.state.albums);
-    const { albums } = this.state;
+  /*
+   * Return the album details list. 
+   */
+  renderAlbums() {
+    return this.state.albums.map(album =>
+      <AlbumDetail key={album.title} album={album} />
+    );
+  }
 
+  render() {
     return (
       <View>
-        {albums.map(album =>
-          <AlbumDetail key={album.title} album={album} />
-        )}
+        {this.renderAlbums()}
       </View>
     );
   }
