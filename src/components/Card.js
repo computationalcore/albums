@@ -1,12 +1,31 @@
-import React, { Component } from 'react';
-import { View } from 'react-native';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 
-const styles = {
+/**
+ * @description	Card Component. A visual box container. 
+ * @constructor
+ * @param {Object} props - The props that were defined by the caller of this component.
+ * @param {string} props.title - The title of the header.
+ */
+const Card = (props) => {
+  const { containerStyle } = styles;
+
+  return (
+    <View style={containerStyle}>
+      {props.children}
+    </View>
+  );
+};
+
+/**
+ * The component StyleSheet.
+ */
+const styles = StyleSheet.create({
   containerStyle: {
     borderWidth: 1,
     borderRadius: 2,
     borderColor: '#ddd',
-    borderBottonWidth: 0,
+    borderBottomWidth: 0,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -16,14 +35,6 @@ const styles = {
     marginRight: 5,
     marginTop: 10,
   }
-};
-
-const Card = (props) => {
-  return (
-    <View style={styles.containerStyle}>
-      {props.children}
-    </View>
-  );
-};
+});
 
 export default Card;

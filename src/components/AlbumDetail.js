@@ -1,34 +1,15 @@
 import React from 'react';
-import { Image, Text, View, Linking } from 'react-native';
+import { Image, Linking, StyleSheet, Text, View } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
 import Button from './Button';
 
-const styles = {
-  headerContentStyle: {
-    flexDirection: 'column',
-    justifyContent: 'space-around'
-  },
-  headerTextStyle: {
-    fontSize: 18
-  },
-  thumbnailStyle: {
-    width: 50,
-    height: 50
-  },
-  thumbnailContainerStyle: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 10,
-    marginRight: 10
-  },
-  imageStyle: {
-    height: 300,
-    flex: 1,
-    width: null
-  }
-};
-
+/**
+ * @description	The album detais component.
+ * @constructor
+ * @param {Object} props - The props that were defined by the caller of this component.
+ * @param {string} props.title - The title of the header.
+ */
 const AlbumDetail = ({ album }) => {
   const { title, artist, image, thumbnail_image, url } = album;
   const {
@@ -69,5 +50,33 @@ const AlbumDetail = ({ album }) => {
     </Card>
   );
 };
+
+/**
+ * The component StyleSheet.
+ */
+const styles = StyleSheet.create({
+  headerContentStyle: {
+    flexDirection: 'column',
+    justifyContent: 'space-around'
+  },
+  headerTextStyle: {
+    fontSize: 18
+  },
+  thumbnailStyle: {
+    width: 50,
+    height: 50
+  },
+  thumbnailContainerStyle: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: 10,
+    marginRight: 10
+  },
+  imageStyle: {
+    height: 300,
+    flex: 1,
+    width: null
+  }
+});
 
 export default AlbumDetail;

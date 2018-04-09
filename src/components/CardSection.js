@@ -1,7 +1,25 @@
 import React from 'react';
-import { View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
-const styles = {
+/**
+ * @description	Card section Component. Sections division inside a card.
+ * @constructor
+ * @param {Object} props - The props that were defined by the caller of this component.
+ */
+const CardSection = (props) => {
+  const { containerStyle } = styles;
+
+  return (
+    <View style={containerStyle}>
+      {props.children}
+    </View>
+  );
+};
+
+/**
+ * The component StyleSheet.
+ */
+const styles = StyleSheet.create({
   containerStyle: {
     borderBottonWidth: 1,
     padding: 5,
@@ -11,14 +29,6 @@ const styles = {
     borderColor: '#ddd',
     position: 'relative'
   }
-};
-
-const CardSection = (props) => {
-  return (
-    <View style={styles.containerStyle}>
-      {props.children}
-    </View>
-  );
-};
+});
 
 export default CardSection;

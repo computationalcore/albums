@@ -12,8 +12,12 @@ import { displayName } from './app.json';
 import Header from './src/components/Header';
 import AlbumList from './src/components/AlbumList';
 
-type Props = {};
-export default class App extends Component<Props> {
+/**
+ * @description App root component.
+ * @constructor
+ * @param {Object} props - The props that were defined by the caller of this component.
+ */
+class App extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -25,3 +29,5 @@ export default class App extends Component<Props> {
     );
   }
 }
+
+export default App;
