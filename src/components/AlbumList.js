@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, View } from 'react-native';
+import { Alert, ScrollView, View } from 'react-native';
 import Spinner from 'react-native-loading-spinner-overlay';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
@@ -15,11 +15,8 @@ class AlbumList extends Component {
 
     /**
 		 * @typedef {Object} ComponentState
-		 * @property {Object[]} albums - All albums from the logged account.
-		 * @property {number} request - App request state used to represent the API request/response.
-		 * @property {boolean} menuOpen - Main Screen menu state.
-		 * @property {Object[]} searchResults - All books returned from the search.
-		 * @property {string} query - Search term input.
+		 * @property {Object[]} albums - Array of albums objects.
+		 * @property {boolean} loading - Indicates whether the app is getting data.
 		 */
 
 		/** @type {ComponentState} */
@@ -34,7 +31,6 @@ class AlbumList extends Component {
 	 * Call the API to get all books if the user is logged.
 	 */
 	componentWillMount() {
-    Alert.alert('Error', 'Error message');
     this.getAlbumList();
   }
 
@@ -50,13 +46,21 @@ class AlbumList extends Component {
       response => this.setState({ albums: response.data, loading: false })
     )
     .catch(function (error) {
+      Alert.alert(
+        'Error',
+        error,
+        [
+          { text: 'Try Again', onPress: () => app.getAlbumList() },
+        ],
+        { cancelable: false }
+      );
       // handle error
       this.setState({ loading: false });
       console.log(error);
     });
 	};
 
-  /*
+  /**
    * @description Return the album details list JSX.
    */
   renderAlbums() {
@@ -67,11 +71,11 @@ class AlbumList extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
       <Spinner
         visible={this.state.loading}
-        textContent={'Loading...'}
-        textStyle={{ color: '#33F' }}
+        textContent={'Getting albums list from the server...'}
+        textStyle={{ color: '#112' }}
       />
         {(this.state.loading) ? (
           <Spinner

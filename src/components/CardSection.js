@@ -21,7 +21,7 @@ const CardSection = (props) => {
  */
 const styles = StyleSheet.create({
   containerStyle: {
-    borderBottonWidth: 1,
+    borderBottomWidth: 1,
     padding: 5,
     backgroundColor: '#fff',
     justifyContent: 'flex-start',
